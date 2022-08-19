@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import InputCity from './InputCity'
 
 function App() {
   const [data, setData] = useState({})
@@ -15,16 +16,14 @@ function App() {
     }
   }
 
+  const onChangeInput = (e) => setLocation(e.target.value)
+
   return (
     <div className="App">
       <div className="search-box">
-        <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          onKeyPress={findLocation}
-          placeholder='Enter a location'
-          className="search-bar"
+        <InputCity location={location} 
+        findLocation={findLocation} 
+        onChangeInput={onChangeInput}
         />
       </div>
       <div className="container">
