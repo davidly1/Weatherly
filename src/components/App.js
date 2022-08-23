@@ -5,7 +5,7 @@ import InputCity from './InputCity'
 function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState("")
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
 
   const findLocation = (e) => {
     if (e.key === 'Enter') {
@@ -34,7 +34,7 @@ function App() {
         </div>
         <div className="weather-box">
           <div className="temp">
-            {data.main ? <h1>{(data.main.temp - 273.15).toFixed(2)}°C</h1> : null}
+            {data.main ? <h1>{(data.main.temp)}°C</h1> : null}
           </div>
           <div className="description">
             {data.weather ? <p>{data.weather[0].description}</p> : null}
@@ -42,7 +42,7 @@ function App() {
         </div>
         <div className="bottom">
           <div className="feels_like">
-            {data.main ? <p>Feels Like: {(data.main.feels_like - 273.15).toFixed(2)}°C</p> : null}
+            {data.main ? <p>Feels Like: {(data.main.feels_like)}°C</p> : null}
           </div>
           <div className="humidity">
             {data.main ? <p>Humidity: {data.main.humidity}%</p> : null}
